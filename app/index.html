@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp" ng-controller="PhoneListCtrl">
+<head>
+  <meta charset="utf-8">
+  <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
+
+
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="live.js"></script>
+
+  <style>
+
+ .container {
+    width: 600px;
+    background: #E0E0E0;
+    border-radius: 2px;
+    padding: 30px 30px;
+    margin-bottom: 30px;
+	}
+		  .form-control {
+		  			border-radius: 2px;
+		  			box-shadow: none;
+		  }
+		.form-control:focus {
+				outline: 0;
+				border: 1px solid #bbb;
+				border-radius: 2px;
+				box-shadow: none;
+		}
+
+		ul,ol,li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.mtb-30 {
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		
+		.phone-list-ul {
+			margin-top: 30px;
+		}
+		.phone-list-ul img {
+			max-width: 160px;
+			height: auto;
+		}
+		.phone-list-ul li {
+				background: #FFF;
+		    border-bottom: 1px solid #DDD;
+		    margin-bottom: 3px;
+		    padding: 5px 10px;
+		    display: block;
+		    float: left;
+		    width: 100%;
+		}
+		.phone-list-ul li:nth-child(2n) { 
+				background: #F5F5F5;
+		}
+
+		.c-img {
+			/* display: block;
+			clear: both; */
+
+			float: left;
+		}
+		.c-title {
+      margin: 40px 0;
+	    float: right;
+	    width: 50%;
+		}
+		.c-title a {
+				color: #FF5722;
+				font-weight: bold;
+				margin-bottom: 20px;
+				text-decoration: underline;
+		}
+		
+		.btn-block {
+			margin: 30px 0 0;
+		}
+
+		.btn {
+			border-radius: 2px;
+		}
+
+  </style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+
+					<input type="text" class="form-control" ng-model="query" placeholder="Search ... ">
+					
+					<div class="mtb-30">
+						Phone List Sort By
+					</div> <!-- End  -->
+					
+					<select ng-model="phoneOrder" class="form-control">
+						<option value="name">Alphabetical</option>
+						<option value="age">Newest</option>
+					</select>
+
+
+
+				  <ul class="phone-list-ul">
+				    <li ng-repeat="phone in phones | filter:query | orderBy: phoneOrder">
+
+				    	<span class="c-img">
+				    		<a href="#"><img ng-src="{{ phone.imageUrl }}" alt="{{ phone.name }}" /></a>
+				    		
+				    	</span>
+
+				    	<span class="c-title">
+				    		<a href="#/phones/:{{ phone.id }}"><span ng-bind="phone.name"></span></a>
+				    		<a class="btn btn-default btn-block" href="#/phones/:{{ phone.id }}">Details</a>
+				    	</span> <!-- End C Title -->
+				    	
+
+				    
+				    	
+				      
+				    </li>
+				  </ul>
+			</div> <!-- End Col  -->
+		</div> <!-- End row -->
+	</div> <!-- End Container -->
+</body>
+</html>
