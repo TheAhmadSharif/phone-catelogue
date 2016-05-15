@@ -1,0 +1,155 @@
+ .container {
+    width: 800px;
+    border-radius: 2px;
+    padding: 30px 30px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
+	}
+		  .form-control {
+		  			border-radius: 2px;
+		  			box-shadow: none;
+		  }
+		.form-control:focus {
+				outline: 0;
+				border: 1px solid #bbb;
+				border-radius: 2px;
+				box-shadow: none;
+		}
+
+		ul,ol,li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	.bold {
+		font-weight: bold !important;
+	}
+		.mtb-30 {
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		
+		.phone-list-ul {
+			margin-top: 30px;
+		}
+		.phone-list-ul img {
+			max-width: 80px;
+			height: auto;
+		}
+		.phone-list-ul li {
+				background: #FFF;
+		    border-bottom: 1px solid #DDD;
+		    margin-bottom: 3px;
+		    padding: 5px 10px;
+		    display: block;
+		    float: left;
+		    width: 100%;
+		}
+		.phone-list-ul li:nth-child(2n) { 
+				background: #F5F5F5;
+		}
+
+		.c-img {
+			/* display: block;
+			clear: both; */
+
+			float: left;
+		}
+		.c-title {
+	    margin: 0 20px;
+	    float: left;
+		}
+		.c-title a {
+				color: #009C52;
+				font-weight: bold;
+				margin-bottom: 20px;
+				text-decoration: underline;
+		}
+		
+		.btn-block {
+			margin: 30px 0 0;
+		}
+
+		.btn {
+			border-radius: 2px;
+		}
+		.nf-title {
+			font-size: 30px;
+		}
+	.h-nav {
+		margin-bottom: 10px;
+		float: right;
+	}
+	.h-nav > li {
+		display: inline-block;
+
+	 > a{
+	display: inline-block;
+	padding: 5px;
+	color: #333;
+	margin-right: 5px;
+	border-radius: 2px;
+	&:hover {
+		background: #009A54;
+		color: #FFF;
+		text-decoration: none;
+	}
+	}
+
+}
+#t-header {
+		margin-bottom: 30px;
+    display: block;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #DDD;
+}
+
+.logo-block {
+
+	img {
+		width: 100px;
+		height: auto;
+	}
+}
+.error-block {
+	display: table;
+	margin: auto;
+	z-index: 12;
+	top: 40%;
+}
+.list-option {
+	float: right;
+	width: initial;
+}
+
+.phone {
+	width: 140px;
+}
+
+.p-img-list > li {
+	display: inline-block;
+	border: 1px solid #ddd;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	padding: 5px;
+	
+	&:hover{
+		border: 1px solid #009C52;
+	}
+}
+
+.i-title {
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: capitalize;
+}
+
+.p-name {
+	font-size: 16px;
+	text-transform: capitalize;
+	margin-top: 20px;
+	display: block;
+}

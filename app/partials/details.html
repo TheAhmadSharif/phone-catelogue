@@ -1,6 +1,40 @@
-<ul>
-	<li ng-bind="id"></li>
-	<li ng-bind="name"></li>
-	<li ng-bind="snippet"></li>
-	<li><img ng-src="{{ imageUrl }}" alt=""></li>
-</ul>
+
+
+<div class="row">
+	<div class="col-sm-4">
+		<figure>
+			<img ng-src="{{ phone.images[0] }}" alt="" width="200">
+			<figcaption>	<span class="p-name">{{ phone.id }}</span> </figcaption>
+		</figure>
+	
+</div> <!-- End -->
+
+	<div class="col-sm-8">
+			<ul class="p-img-list">
+				<li ng-repeat="img in phone.images">
+						<img ng-src="{{ img }}" alt="" width="100">
+				</li>
+			</ul>
+	</div> <!-- End col 8 -->
+</div> <!-- End row -->
+
+<hr class="line">
+<div class="row">
+	<div class="col-sm-12">
+			<div class="feature">
+					<ul>
+						<li> <span class="i-title">Availability</span> : {{ phone.availability[0] }} </li>
+
+						<li> <span class="i-title">Battery</span> : {{ phone.battery.type }} </li>
+						<li> <span class="i-title">Display</span> : {{ phone.display }} </li>
+						<li> <span class="i-title">Connectivity</span> : {{ phone.connectivity }} </li>
+						<li> <span class="i-title">Additional Features</span> : {{ phone.additionalFeatures }} </li>
+						<li> <span class="i-title">Size &amp; Weight</span> : {{ phone.sizeAndWeight }} </li>
+						<li> <span class="i-title">camera</span> : {{ phone.camera }} </li>
+						<li> <span class="i-title">description</span> : {{ phone.description }} </li>
+						<li> <span class="i-title">Connectivity</span> : {{ phone.hardware }} </li>
+						<li> <span class="i-title">Storage</span> : {{ phone.storage }} </li>
+					</ul>
+			</div> <!-- End -->
+	</div> <!-- End Col -->
+</div> <!-- End row -->

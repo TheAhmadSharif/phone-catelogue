@@ -1,0 +1,29 @@
+
+					<input type="text" class="form-control" ng-model="query" placeholder="Search ... ">
+					
+					<div class="mtb-30">
+						Phone List Sort By
+							<select ng-model="phoneOrder" class="form-control list-option">
+								<option value="name">Alphabetical</option>
+								<option value="age">Newest</option>
+							</select>
+					</div> <!-- End  -->
+					
+				
+
+
+
+				  <ul class="phone-list-ul">
+				    <li ng-repeat="phone in phones | filter:query | orderBy: phoneOrder">
+
+				    	<span class="c-img">
+				    		<a href="#/phone/{{phone.id}}"><img ng-src="{{ phone.imageUrl }}" alt="{{ phone.name }}" /></a>
+				    		
+				    	</span>
+
+				    	<span class="c-title">
+				    		<a href="#/phone/{{phone.id}}"><span ng-bind="phone.name"></span></a>
+				    	</span> <!-- End C Title -->
+				      
+				    </li>
+				  </ul>

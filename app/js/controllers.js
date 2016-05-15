@@ -1,23 +1,55 @@
 'use strict';
 
+var phonecatApp = angular.module('phonecatApp', [
+  'ngRoute'
+]);
+
+/* Route */
+
+phonecatApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: 'partials/list.html',
+        controller: 'PhoneListCtrl'
+      }).
+      when('/phone/:cool', {
+        templateUrl: 'partials/details.html',
+        controller: 'detailsController'
+      }).
+      otherwise({
+        redirectTo: '/nothing-found',
+        templateUrl: 'partials/404.html'
+      });
+  }]);
+
+
 /* Controllers */
 
-var phonecatApp = angular.module('phonecatApp', []);
 
-phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http) {
-
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$routeParams','$http', function($scope, $routeParams, $http) {
 $scope.phoneOrder = 'age';
-
-
-		$http.get('phones/phones.json').success(function(data) {
-			$scope.phones = data;
-		});
-
-
 		$http({method: 'get', url: 'phones/phones.json'}).then(function success(a){
 				console.log(a);
+				$scope.phones = a.data;
 		}, function error(a){
-				console.log(error);
 		})  
+
+}]);
+
+
+phonecatApp.controller('detailsController',['$scope','$http','$routeParams',function($scope,$http, $routeParams){
+
+	var path = $scope.name = $routeParams.cool;
+	console.log($routeParams.cool);
+
+	$http({method: 'get', url: 'phones/' + path + '.json'}).then(function success(Dataset){
+			$scope.phone = Dataset.data;
+			console.log(Dataset);
+	}, function error (){
+			console.log(Dataset);
+	});
+
+
 
 }]);
