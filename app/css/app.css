@@ -4,7 +4,8 @@
   padding: 30px 30px;
   margin-bottom: 30px;
   position: relative;
-  z-index: 10; }
+  z-index: 10;
+  min-height: 600px; }
 
 .form-control {
   border-radius: 2px;
@@ -72,8 +73,9 @@ ul, ol, li {
   font-size: 30px; }
 
 .h-nav {
+  float: right;
   margin-bottom: 10px;
-  float: right; }
+  margin-right: -20px; }
 
 .h-nav > li {
   display: inline-block; }
@@ -132,5 +134,15 @@ ul, ol, li {
   text-transform: capitalize;
   margin-top: 20px;
   display: block; }
+
+.content-block {
+  min-height: 500px; }
+
+hr {
+  border: 0;
+  border-bottom: 1px solid #DDD; }
+
+textarea.form-control {
+  height: 140px; }
 
 /*# sourceMappingURL=app.css.map */

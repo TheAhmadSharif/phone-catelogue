@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-sm-4">
 		<figure>
-			<img ng-src="{{ phone.images[0] }}" alt="" width="200">
+			<img ng-src="{{ focusImage }}" alt="" width="200">
 			<figcaption>	<span class="p-name">{{ phone.id }}</span> </figcaption>
 		</figure>
 	
@@ -12,7 +12,7 @@
 	<div class="col-sm-8">
 			<ul class="p-img-list">
 				<li ng-repeat="img in phone.images">
-						<img ng-src="{{ img }}" alt="" width="100">
+						<img ng-src="{{ img }}" ng-click="setImage(img)" width="100">
 				</li>
 			</ul>
 	</div> <!-- End col 8 -->
@@ -26,14 +26,20 @@
 						<li> <span class="i-title">Availability</span> : {{ phone.availability[0] }} </li>
 
 						<li> <span class="i-title">Battery</span> : {{ phone.battery.type }} </li>
-						<li> <span class="i-title">Display</span> : {{ phone.display }} </li>
-						<li> <span class="i-title">Connectivity</span> : {{ phone.connectivity }} </li>
+						<li> <span class="i-title">Display</span> : {{ phone.display.screenResolution }} </li>
+						<li> <span class="i-title">Connectivity</span> : {{ phone.connectivity.bluetooth }} </li>
+						<li> <span class="i-title">Infrared</span> : {{phone.connectivity.infrared | checkmark}} </li>
 						<li> <span class="i-title">Additional Features</span> : {{ phone.additionalFeatures }} </li>
-						<li> <span class="i-title">Size &amp; Weight</span> : {{ phone.sizeAndWeight }} </li>
-						<li> <span class="i-title">camera</span> : {{ phone.camera }} </li>
+						<li> <span class="i-title">Size &amp; Weight</span> : 
+
+							<span ng-repeat="feature in phone.sizeAndWeight.dimensions"> {{ feature }}</span>
+
+						 </li>
+						<li> <span class="i-title">Features</span> : 	<span ng-repeat="feature in phone.camera.features"> {{ feature }}</span> </li>
 						<li> <span class="i-title">description</span> : {{ phone.description }} </li>
-						<li> <span class="i-title">Connectivity</span> : {{ phone.hardware }} </li>
-						<li> <span class="i-title">Storage</span> : {{ phone.storage }} </li>
+						<li> <span class="i-title">Accelerometer</span> : {{ phone.hardware.accelerometer | checkmark }} </li>
+						<li> <span class="i-title">Flash</span> : {{ phone.storage.flash }} </li>
+						<li> <span class="i-title">Ram</span> : {{ phone.storage.ram }} </li>
 					</ul>
 			</div> <!-- End -->
 	</div> <!-- End Col -->
