@@ -1,5 +1,4 @@
-
-# AngularJS Phone Catalog Tutorial Application
+## AngularJS Phone Catalog Tutorial Application
 
 ## Overview
 
@@ -15,4 +14,5 @@ MIT.
 ## Contact
 
 ahmadshorif@gmail.com
+
 skype: ahmadshorif
