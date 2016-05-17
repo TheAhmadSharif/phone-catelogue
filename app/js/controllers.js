@@ -2,7 +2,7 @@
 
 var phonecatApp = angular.module('phonecatApp', [
   'ngRoute',
-  'phonecatFilters'
+  'ngResource'
 ]);
 
 /* Route */
@@ -34,52 +34,45 @@ phonecatApp.config(['$routeProvider',
 /* Controllers */
 
 
-phonecatApp.controller('PhoneListCtrl', ['$scope', '$routeParams','$http', function($scope, $routeParams, $http) {
-$scope.phoneOrder = 'age';
-		$http({
-			method: 'get', 
-			url: 'phones/phones.json'
-		}).then(function success(a){
-				console.log(a);
-				$scope.phones = a.data;
-		}, function error(a){
-		})  
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$routeParams','$http', 'restAPI',function($scope, $routeParams, $http, restAPI) {
+		
+		$scope.phoneOrder = 'age';
+		$scope.phones = restAPI.getData();
 
 }]);
 
 
-phonecatApp.controller('detailsController',['$scope','$http','$routeParams',function($scope,$http, $routeParams){
+phonecatApp.controller('detailsController',['$scope','$http','$routeParams','restAPI',function($scope,$http, $routeParams, restAPI){
 
-	var path = $scope.name = $routeParams.cool;
-	console.log($routeParams.cool);
-
-	$http({
-		method: 'get', 
-		url: 'phones/' + path + '.json'
-	}).then(function success(Dataset){
-			$scope.phone = Dataset.data;
-			console.log(Dataset);
-
-			$scope.focusImage = Dataset.data.images[0];
-
-	}, function error (){
-			console.log(Dataset);
-	});
-
-
+	 var rest = restAPI.get({cool: $routeParams.cool}).$promise.then(function (Dataset) {
+	 		$scope.focusImage = Dataset.images[0];
+	 		$scope.phone = Dataset;
+	    console.log(Dataset);
+	 });
+	 console.log(rest);
+	 
 	$scope.setImage = function (imgUrl) {
 		console.log(imgUrl);
 		$scope.focusImage = imgUrl;
 	}
+}]);
 
 
-
+/* Factory */
+phonecatApp.factory('restAPI', ['$resource',function ($resource) {
+		return $resource('phones/:cool.json', {}, {
+			getData: { method: 'GET', params: {cool: 'phones'}, isArray: true }
+		});
 }]);
 
 /* Filters */
-
-angular.module('phonecatFilters', []).filter('checkmark', function() {
+phonecatApp.filter('phonecatFilters', []).filter('checkmark', function() {
   return function(input) {
     return input ? '\u2713' : '\u2718';
   };
 });
+
+
+
+
+
